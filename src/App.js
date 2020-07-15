@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import { connect } from "react-redux";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import LandingPage from './components/LandingPage';
 
 
 
@@ -26,9 +27,11 @@ useEffect(() => {
 
 
 return(
-  <main>
-    
-  </main>
+  <BrowserRouter>
+    <Switch>
+      <Route path='/' component={LandingPage} />
+    </Switch>
+  </BrowserRouter>
 )
 
 }
