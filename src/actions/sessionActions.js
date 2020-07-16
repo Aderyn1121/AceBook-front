@@ -16,7 +16,7 @@ export const loadToken = () => (dispatch) => {
     const lastName = window.localStorage.getItem("flash/authentication/lastName");
     const gender = window.localStorage.getItem("flash/authentication/gender");
     const genderPref = window.localStorage.getItem("flash/authentication/genderPref");
-    const imgUrl = window.localStorage.getItem("flash/authentication/imgUrl");
+    // // const imgUrl = window.localStorage.getItem("flash/authentication/imgUrl");
     const spectrum = window.localStorage.getItem("flash/authentication/spectrum");
     const likesPuns = window.localStorage.getItem("flash/authentication/likesPuns");
     const favPet = window.localStorage.getItem("flash/authentication/favPet");
@@ -25,15 +25,15 @@ export const loadToken = () => (dispatch) => {
     const introvert = window.localStorage.getItem("flash/authentication/introvert");
     const likedUsers = window.localStorage.getItem("flash/authentication/likedUsers");
     if (token) {
-        dispatch(setToken({ token, user, firstName, lastName, gender, genderPref, imgUrl, spectrum, likesPuns, favPet, spontaneous, intoTech, introvert, likedUsers }));
+        dispatch(setToken({ token, user, firstName, lastName, gender, genderPref, spectrum, likesPuns, favPet, spontaneous, intoTech, introvert, likedUsers }));
     }
 };
 
-export const createUser = (firstName, lastName, email, password, gender, genderPref, imgUrl, spectrum, likesPuns, favPet, spontaneous, intoTech, introvert) => async dispatch => {
+export const createUser = (firstName, lastName, email, password, gender, genderPref, spectrum, likesPuns, favPet, spontaneous, intoTech, introvert) => async dispatch => {
     const response = await fetch(`${baseUrl}/api/users`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ firstName, lastName, email, password }),
+        body: JSON.stringify({ firstName, lastName, email, password, gender, genderPref, spectrum, likesPuns, favPet, spontaneous, intoTech, introvert}),
     });
 
     if (response.ok) {
@@ -44,7 +44,7 @@ export const createUser = (firstName, lastName, email, password, gender, genderP
         window.localStorage.setItem("flash/authentication/lastName", payload.user.lastName);
         window.localStorage.setItem("flash/authentication/gender", payload.user.gender);
         window.localStorage.setItem("flash/authentication/genderPref", payload.user.genderPref);
-        window.localStorage.setItem("flash/authentication/imgUrl", payload.user.imgUrl);
+        // // window.localStorage.setItem("flash/authentication/imgUrl", payload.user.imgUrl);
         window.localStorage.setItem("flash/authentication/spectrum", payload.user.spectrum);
         window.localStorage.setItem("flash/authentication/likesPuns", payload.user.likesPuns);
         window.localStorage.setItem("flash/authentication/favPet", payload.user.favPet);
@@ -72,7 +72,7 @@ export const login = (email, password) => async dispatch => {
         window.localStorage.setItem("flash/authentication/lastName", payload.user.lastName);
         window.localStorage.setItem("flash/authentication/gender", payload.user.gender);
         window.localStorage.setItem("flash/authentication/genderPref", payload.user.genderPref);
-        window.localStorage.setItem("flash/authentication/imgUrl", payload.user.imgUrl);
+        // // window.localStorage.setItem("flash/authentication/imgUrl", payload.user.imgUrl);
         window.localStorage.setItem("flash/authentication/spectrum", payload.user.spectrum);
         window.localStorage.setItem("flash/authentication/likesPuns", payload.user.likesPuns);
         window.localStorage.setItem("flash/authentication/favPet", payload.user.favPet);
@@ -91,7 +91,7 @@ export const logout = () => (dispatch) => {
     window.localStorage.removeItem("flash/authentication/lastName");
     window.localStorage.removeItem("flash/authentication/gender");
     window.localStorage.removeItem("flash/authentication/genderPref");
-    window.localStorage.removeItem("flash/authentication/imgUrl");
+    // window.localStorage.removeItem("flash/authentication/imgUrl");
     window.localStorage.removeItem("flash/authentication/spectrum");
     window.localStorage.removeItem("flash/authentication/likesPuns");
     window.localStorage.removeItem("flash/authentication/favPet");

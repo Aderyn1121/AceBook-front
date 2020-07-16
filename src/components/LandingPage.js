@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import {login} from '../actions/sessionActions'
 import Modal from 'react-modal'
-import SignUp from './SignUp';
+import SignUpContainer from './SignUp';
 
 const LandingPage = props => {
     const [signinemail, setSigninEmail] = useState("");
@@ -48,7 +48,7 @@ const LandingPage = props => {
                         <button onClick={handleModal}>Sign Up</button>
                     </div>
                     <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)} style={{overlay:{ backgroundColor: 'grey'}, content:{backgroundColor: '#5c2478', color: 'white'}}} >
-                        <SignUp />
+                        <SignUpContainer />
                         <button onClick={() => setModalIsOpen(false)}>Close</button>
                     </Modal>   
             </div>

@@ -1,20 +1,20 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import { connect } from 'react-redux';
 import {createUser} from '../actions/sessionActions'
-import {ToastContainer, toast} from 'react-toastify'
+// import {ToastContainer, toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 
 
 
-const SignUpContainer = async (props) => {
+const SignUpContainer = (props) => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [gender, setGender] = useState('');
     const [genderPref, setGenderPref] = useState('');
-    const [imgUrl, setImgUrl] = useState('');
-    const [spectrum, setSpectrum] = useState('');
+    // const [imgUrl, setImgUrl] = useState('');
+    const [spectrum, setSpectrum] = useState('ace');
     const [likesPuns, setLikesPuns] = useState(true);
     const [favPet, setFavPet] = useState('dog');
     const [spontaneous, setSpontaneous] = useState(true);
@@ -22,32 +22,37 @@ const SignUpContainer = async (props) => {
     const [introvert, setIntrovert] = useState(true);
     
     const NameInput = props => {  
+        let tempFirst
+        let tempLast
         const firstNameChange = e => {
-            setFirstName(e.target.value)
+            tempFirst = (e.target.value)
+            // console.log('changing name')
         }
 
         const lastNameChange = e => {
-            setLastName(e.target.value)
+            tempLast = (e.target.value)
         }
 
         const handleClick = (e) =>{
-            setNextComponent(<GenderSpectrum />)
+            setFirstName(tempFirst)
+            setLastName(tempLast)
+            setNextComponent("GenderSpectrum")
         }
         
         return(
             <div className='signUp__question-div'>
                 <h2 className='signUp__question-header'>What's your name?</h2>
                 <label>First Name: 
-                <input onChange={firstNameChange} value={firstName} placeholder='First'></input>
+                <input onChange={firstNameChange} placeholder='First'></input>
                 </label><br />
                 <label>Last Name: 
-                <input onChange={lastNameChange} value={lastName} placeholder='Last' />
+                <input onChange={lastNameChange} placeholder='Last' />
                 </label><br />
                 <button onClick={handleClick}>Continue</button>
             </div>
         )
     }
-    const [nextComponent, setNextComponent] = useState(<NameInput />)
+    const [nextComponent, setNextComponent] = useState("NameInput")
     
 
     const GenderSpectrum = props => {
@@ -64,28 +69,28 @@ const SignUpContainer = async (props) => {
         }
 
         const handleClick = (e) =>{
-            setNextComponent(<ImgInput />)
+            setNextComponent("PunInput")
         }
 
         return(
             <div className='signUp__question-div'>
                 <h2 className='signUp__question-header'>A few personal questions...</h2>
                 <label>Choose your gender: 
-                    <select onChange={genderChange}>
+                    <select onChange={genderChange} value={gender}>
                         <option value='male'>Guy</option>
                         <option value='female'>Gal</option>
                         <option value='nonbinary'>Nonbinary Pal</option>
                     </select>
                 </label><br />
                 <label>Choose your gender preference: 
-                    <select onChange={genderPrefChange}>
+                    <select onChange={genderPrefChange} value={genderPref}>
                         <option value='male'>Guys</option>
                         <option value='female'>Gals</option>
                         <option value='nonbinary'>Any Pals</option>
                     </select>
                 </label><br />
                 <label>Where do you fall on the ace spectrum?  
-                    <select onChange={spectrumChange}>
+                    <select onChange={spectrumChange} value={spectrum}>
                         <option value='ace'>Asexual</option>
                         <option value='demi'>Demi</option>
                         <option value='grayAce'>Gray-Ace</option>
@@ -98,24 +103,26 @@ const SignUpContainer = async (props) => {
     }
 
 
-    const ImgInput = props => {
-        const imgChange = e => {
-            setImgUrl(e.target.value)
-        }
+    // const ImgInput = props => {
+    //     let tempImg;
+    //     const imgChange = e => {
+    //         tempImg = (e.target.value)
+    //     }
 
-        const handleClick = (e) =>{
-            setNextComponent(<PunInput />)
-        }
+    //     const handleClick = (e) =>{
+    //         setImgUrl(tempImg)
+    //         setNextComponent("PunInput")
+    //     }
 
-        return(
-            <div className='signUp__question-div'>
-                <h2 className='signUp__question-header'>Profile Pic</h2>
-                <input onChange={imgChange} placeholder="i.imgur.com/..."></input>
-                <br />
-                <button onClick={handleClick}>Continue</button>
-            </div>
-        )
-    }
+    //     return(
+    //         <div className='signUp__question-div'>
+    //             <h2 className='signUp__question-header'>Profile Pic</h2>
+    //             <input onChange={imgChange} placeholder="i.imgur.com/..."></input>
+    //             <br />
+    //             <button onClick={handleClick}>Continue</button>
+    //         </div>
+    //     )
+    // }
 
     const PunInput = props => {
         const punChange = e => {
@@ -123,13 +130,13 @@ const SignUpContainer = async (props) => {
         }
 
         const handleClick = (e) =>{
-            setNextComponent(<PetInput />)
+            setNextComponent("PetInput")
         }
 
         return(
             <div className='signUp__question-div'>
                 <h2 className='signUp__question-header'>Do you like puns?</h2>
-                <select onChange={punChange}>
+                <select value={likesPuns} onChange={punChange}>
                     <option value={true}>Yes</option>
                     <option value={false}>No, I'm not punny enough.</option>
                 </select>
@@ -145,13 +152,13 @@ const SignUpContainer = async (props) => {
         }
 
         const handleClick = (e) =>{
-            setNextComponent(<SpontanietyCheck />)
+            setNextComponent("SpontanietyCheck")
         }
 
         return(
             <div className='signUp__question-div'>
                 <h2 className='signUp__question-header'>What's your ideal pet?</h2>
-                <select onChange={petChange}>
+                <select value={favPet} onChange={petChange}>
                     <option value='dog'>Dogs</option>
                     <option value='cat'>Cats</option>
                     <option value='lizard'>Lizards</option>
@@ -170,13 +177,13 @@ const SignUpContainer = async (props) => {
         }
 
         const handleClick = (e) =>{
-            setNextComponent(<IntrovertCheck />)
+            setNextComponent("IntrovertCheck")
         }
 
         return(
             <div className='signUp__question-div'>
                 <h2 className='signUp__question-header'>Do you tend towards planning, or spontaneity?</h2>
-                <select onChange={spontaneousChange}>
+                <select value={spontaneous} onChange={spontaneousChange}>
                     <option value={true}>Spontaneity</option>
                     <option value={false}>Pre-planning</option>
                 </select>
@@ -192,13 +199,13 @@ const SignUpContainer = async (props) => {
         }
 
         const handleClick = (e) =>{
-            setNextComponent(<IntoTechCheck />)
+            setNextComponent("IntoTechCheck")
         }
 
         return(
             <div className='signUp__question-div'>
                 <h2 className='signUp__question-header'>Are you more extroverted, or introverted?</h2>
-                <select onChange={introvertChange}>
+                <select value={introvert} onChange={introvertChange}>
                     <option value={true}>Introverted</option>
                     <option value={false}>Extroverted</option>
                 </select>
@@ -214,15 +221,15 @@ const SignUpContainer = async (props) => {
         }
 
         const handleClick = (e) =>{
-            setNextComponent(<EmailPass />)
+            setNextComponent("EmailPass")
         }
 
         return(
             <div className='signUp__question-div'>
-                <h2 className='signUp__question-header'>Are you more extroverted, or introverted?</h2>
-                <select onChange={intoTechChange}>
-                    <option value={true}>Introverted</option>
-                    <option value={false}>Extroverted</option>
+                <h2 className='signUp__question-header'>Are you into technology?</h2>
+                <select value={intoTech} onChange={intoTechChange}>
+                    <option value={true}>Yes</option>
+                    <option value={false}>No</option>
                 </select>
                 
                 <button onClick={handleClick}>Continue</button>
@@ -232,19 +239,22 @@ const SignUpContainer = async (props) => {
 
 
     const EmailPass = props => {
+        let tempEmail;
+        let tempPW;
         const emailChange = e => {
-            setEmail(e.target.value)
+            tempEmail = (e.target.value)
         }
 
         const passChange = e => {
-            setPassword(e.target.value)
+            tempPW = (e.target.value)
         }
 
         const handleClick = async (e) =>{
-            if(firstName && lastName && email && password){
-            await props.createUser(firstName, lastName, email, password, gender, genderPref, imgUrl, spectrum, likesPuns, favPet, spontaneous, intoTech, introvert)
-            }
-            else toast('Please fill out all fields!')
+            setEmail(tempEmail)
+            setPassword(tempPW)
+            // if(imgUrl === undefined) setImgUrl(null)
+            await props.createUser(firstName, lastName, email, password, gender, genderPref, spectrum, likesPuns, favPet, spontaneous, intoTech, introvert)
+
         }
 
         return(
@@ -258,19 +268,38 @@ const SignUpContainer = async (props) => {
     }
 
 
-    return(
-        <>
-        {nextComponent}
-        <ToastContainer />
-        </>
-    )
+    
+    switch(nextComponent){
+        case 'NameInput':
+            return <NameInput />
+        case 'GenderSpectrum':
+            return <GenderSpectrum />
+        // case 'ImgInput':
+        //     return <ImgInput />
+        case 'PunInput':
+            return <PunInput />
+        case 'PetInput':
+            return <PetInput />
+        case 'SpontanietyCheck':
+            return <SpontanietyCheck />
+        case 'IntrovertCheck':
+            return <IntrovertCheck />
+        case "IntoTechCheck":
+            return <IntoTechCheck />
+        case 'EmailPass':
+            return <EmailPass createUser={props.createUser} />
+        default:
+            return null
+        }
+
+    
 }
 
 
 const mapDispatchToProps = dispatch => {
     return {
-        createUser: (firstName, lastName, email, password, gender, genderPref, imgUrl, spectrum, likesPuns, favPet, spontaneous, intoTech, introvert) =>{
-            return dispatch(createUser(firstName, lastName, email, password, gender, genderPref, imgUrl, spectrum, likesPuns, favPet, spontaneous, intoTech, introvert))
+        createUser: (firstName, lastName, email, password, gender, genderPref, spectrum, likesPuns, favPet, spontaneous, intoTech, introvert) =>{
+            return dispatch(createUser(firstName, lastName, email, password, gender, genderPref, spectrum, likesPuns, favPet, spontaneous, intoTech, introvert))
         }
     }
 }
