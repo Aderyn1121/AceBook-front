@@ -1,5 +1,5 @@
 import { SET_TOKEN, REMOVE_TOKEN } from "../actions/sessionActions.js";
-import { act } from "react-dom/test-utils";
+// import { act } from "react-dom/test-utils";
 
 const initialState = {
     id: null,

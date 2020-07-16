@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import { connect } from "react-redux";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LandingPage from './components/LandingPage';
-
+import {loadToken} from './actions/sessionActions'
 
 
 
@@ -11,15 +11,6 @@ const App = props => {
     props.loadToken();
 });
 
-useEffect(() => {
-    props.loadCart();
-});
-
-useEffect(() => {
-    (async () => {
-        await props.fetchProducts();
-    })();
-});
 
 useEffect(() => {
     window.scrollTo(0, 0)
@@ -37,4 +28,15 @@ return(
 }
 
 
-export default App;
+const mapDispatchToProps = dispatch => {
+  return {
+      loadToken: () => dispatch(loadToken()),
+  }
+}
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(
+  App
+);

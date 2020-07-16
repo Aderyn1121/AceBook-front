@@ -29,7 +29,7 @@ export const loadToken = () => (dispatch) => {
     }
 };
 
-export const createUser = (firstName, lastName, email, password) => async dispatch => {
+export const createUser = (firstName, lastName, email, password, gender, genderPref, imgUrl, spectrum, likesPuns, favPet, spontaneous, intoTech, introvert) => async dispatch => {
     const response = await fetch(`${baseUrl}/api/users`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
