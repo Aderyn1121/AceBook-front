@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux';
 // import Bio from './Bio'
 import NavBar from './NavBar';
+import MessagePage from './MessagePage';
 
 
 const Profile = props => {
@@ -18,9 +19,7 @@ const Profile = props => {
                 <h3>Looking for: {props.session.genderPref} partners</h3>
                 <h3>{props.session.spectrum}</h3>
             </div>
-            {/* <div className='profile__bio'>
-                <Bio session={props.session} ß/>
-            </div> */}
+            <MessagePage />
         </main>
     )
 }
