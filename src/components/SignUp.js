@@ -117,7 +117,8 @@ const SignUpContainer = (props) => {
     //     return(
     //         <div className='signUp__question-div'>
     //             <h2 className='signUp__question-header'>Profile Pic</h2>
-    //             <input onChange={imgChange} placeholder="i.imgur.com/..."></input>
+    //             <input type='file' onChange={imgChange} placeholder="i.imgur.com/..."></input>
+    //             <button></button>
     //             <br />
     //             <button onClick={handleClick}>Continue</button>
     //         </div>

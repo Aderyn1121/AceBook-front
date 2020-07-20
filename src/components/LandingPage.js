@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import {login} from '../actions/sessionActions'
 import Modal from 'react-modal'
 import SignUpContainer from './SignUp';
+import NavBar from './NavBar';
 
 const LandingPage = props => {
     const [signinemail, setSigninEmail] = useState("");
@@ -34,6 +35,7 @@ const LandingPage = props => {
 
     return(
         <main>
+            <NavBar />
             <h1 className='acebook__title'>Welcome to AceBook!</h1>
             <div className='acebook__desc'>
                 The world's foremost (and likely only) dating site for ace-spectrum people.
