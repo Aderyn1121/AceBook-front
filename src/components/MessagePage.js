@@ -8,16 +8,18 @@ const MessagePage = props => {
     let messages;
 
     const getMessages = async () => {
-        res = await fetch(`${baseUrl}/api/messages/${props.session.id}`)
+        const res = await fetch(`${baseUrl}/api/messages/${props.session.id}`)
 
         if(res.ok){
-            messages = res.json();
+            messages = await res.json();
+            messages = messages.messages
             console.log(messages)
         }
     }
     getMessages();
 
     const sorter = () => {
+        let tracker = new Set()
 
     }
     
