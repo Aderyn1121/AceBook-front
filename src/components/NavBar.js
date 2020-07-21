@@ -24,6 +24,7 @@ const NavBar = props => {
             <Link to='/'>Home</Link>
             <Link to='/profile'>My profile</Link>
             <Link to='/people'>People</Link>
+            <Link to='/matches'>Matches</Link>
             <Button onClick={() => props.logout()}>Sign out</Button>
         </nav>
     )

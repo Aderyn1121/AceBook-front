@@ -7,6 +7,7 @@ import { fetchPeople } from './actions/peopleActions';
 import Profile from './components/Profile'
 import People from './components/People';
 import PersonProf from './components/PersonProf';
+import Matches from './components/Matches';
 
 
 // const PrivateRoute = ({ component: Component, ...rest }) => (
@@ -39,6 +40,7 @@ useEffect(() => {
 return(
   <BrowserRouter>
     <Switch>
+      <Route path='/matches' component={Matches} />
       <Route path='/person/:personId' component={PersonProf} />
       <Route exact path='/people' component={People} />
       <Route exact path='/profile' component={Profile} />
