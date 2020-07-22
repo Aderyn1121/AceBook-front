@@ -50,6 +50,7 @@ const Matches = props => {
             <br />
             <div className='people__list-container'>
                 {matches.map((match, i) => {
+                    if(match === undefined) return null;
                     return(
                         <div key={i} className='people__list-person'>
                             <Link to={`/person/${match.id}`} className='people__list-personName'>
