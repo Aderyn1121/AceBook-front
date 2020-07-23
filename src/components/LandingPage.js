@@ -34,7 +34,7 @@ const LandingPage = props => {
     Modal.setAppElement('#root');
 
     return(
-        <main>
+        <main className='landing__main'>
             <NavBar />
             <h1 className='acebook__title'>Welcome to AceBook!</h1>
             <div className='acebook__desc'>
@@ -46,10 +46,10 @@ const LandingPage = props => {
                     <button className="form__button" onClick={handleSubmit}>Log In</button>
                     <button className="demo__button" onClick={handleDemoUser}>Demo User</button>
                     <div>
-                        <p>Don't have an account? Sign up here!</p>
-                        <button onClick={handleModal}>Sign Up</button>
+                        Don't have an account? Sign up here!
+                        <button className='signup__button' onClick={handleModal}>Sign Up</button>
                     </div>
-                    <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)} style={{overlay:{ backgroundColor: 'grey'}, content:{backgroundColor: '#5c2478', color: 'white'}}} >
+                <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)} style={{ overlay: { backgroundImage: 'url(https://images.unsplash.com/photo-1579547621309-5e57ab324182?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80)', backgroundSize: '100%'}, content:{backgroundColor: '#5c2478', color: 'white', width: '25%', height: '50%', marginLeft: '30%'}}} >
                         <SignUpContainer />
                         <button onClick={() => setModalIsOpen(false)}>Close</button>
                     </Modal>   

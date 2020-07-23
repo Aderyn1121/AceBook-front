@@ -11,8 +11,8 @@ const SignUpContainer = (props) => {
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [gender, setGender] = useState('');
-    const [genderPref, setGenderPref] = useState('');
+    const [gender, setGender] = useState('male');
+    const [genderPref, setGenderPref] = useState('male');
     // const [imgUrl, setImgUrl] = useState('');
     const [spectrum, setSpectrum] = useState('ace');
     const [likesPuns, setLikesPuns] = useState(true);

@@ -43,7 +43,7 @@ const People = props => {
             <NavBar />
             <h1>People</h1>
             <br />
-            <div>
+            <div className='filter__list'>
                 <label>Filter looking for: 
                     <select onChange={handleChoice}>
                         <option value='none'>No filter</option>

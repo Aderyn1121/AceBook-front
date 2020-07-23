@@ -14,12 +14,12 @@ const Profile = props => {
         <main className='profile__main'>
             <NavBar />
             <div className='profile__name-info'>
-                <h2>{props.session.firstName} {props.session.lastName}</h2>
-                <h3>{props.session.gender}</h3>
-                <h3>Looking for: {props.session.genderPref} partners</h3>
-                <h3>{props.session.spectrum}</h3>
+                <h2 className='profile__name'>{props.session.firstName} {props.session.lastName}</h2>
+                <h3 className='profile__gender'>{props.session.gender}</h3>
+                <h3 className='profile__genderPref'>Looking for: {props.session.genderPref} partners</h3>
+                <h3 className='profile__spectrum'>{props.session.spectrum}</h3>
             </div>
-            <MessagePage />
+            {/* <MessagePage /> */}
         </main>
     )
 }
