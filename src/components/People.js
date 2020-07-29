@@ -42,7 +42,6 @@ const People = props => {
         <main className='people__main'>
             <NavBar />
             <h1>People</h1>
-            <br />
             <div className='filter__list'>
                 <label>Filter looking for: 
                     <select onChange={handleChoice}>

@@ -5,6 +5,7 @@ import configureStore from './store/configureStore'
 import './stylesheets/navBar.css'
 import './stylesheets/landingPage.css'
 import './stylesheets/profile.css'
+import './stylesheets/signUp.css'
 
 import App from './App';
 

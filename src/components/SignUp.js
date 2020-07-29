@@ -15,11 +15,11 @@ const SignUpContainer = (props) => {
     const [genderPref, setGenderPref] = useState('male');
     // const [imgUrl, setImgUrl] = useState('');
     const [spectrum, setSpectrum] = useState('ace');
-    const [likesPuns, setLikesPuns] = useState(true);
+    const [likesPuns, setLikesPuns] = useState(1);
     const [favPet, setFavPet] = useState('dog');
-    const [spontaneous, setSpontaneous] = useState(true);
-    const [intoTech, setIntoTech] = useState(true);
-    const [introvert, setIntrovert] = useState(true);
+    const [spontaneous, setSpontaneous] = useState(1);
+    const [intoTech, setIntoTech] = useState(1);
+    const [introvert, setIntrovert] = useState(1);
     
     const NameInput = props => {  
         let tempFirst
@@ -138,8 +138,8 @@ const SignUpContainer = (props) => {
             <div className='signUp__question-div'>
                 <h2 className='signUp__question-header'>Do you like puns?</h2>
                 <select value={likesPuns} onChange={punChange}>
-                    <option value={true}>Yes</option>
-                    <option value={false}>No, I'm not punny enough.</option>
+                    <option value={1}>Yes</option>
+                    <option value={0}>No, I'm not punny enough.</option>
                 </select>
                 
                 <button onClick={handleClick}>Continue</button>
@@ -185,8 +185,8 @@ const SignUpContainer = (props) => {
             <div className='signUp__question-div'>
                 <h2 className='signUp__question-header'>Do you tend towards planning, or spontaneity?</h2>
                 <select value={spontaneous} onChange={spontaneousChange}>
-                    <option value={true}>Spontaneity</option>
-                    <option value={false}>Pre-planning</option>
+                    <option value={1}>Spontaneity</option>
+                    <option value={0}>Pre-planning</option>
                 </select>
                 
                 <button onClick={handleClick}>Continue</button>
@@ -207,8 +207,8 @@ const SignUpContainer = (props) => {
             <div className='signUp__question-div'>
                 <h2 className='signUp__question-header'>Are you more extroverted, or introverted?</h2>
                 <select value={introvert} onChange={introvertChange}>
-                    <option value={true}>Introverted</option>
-                    <option value={false}>Extroverted</option>
+                    <option value={1}>Introverted</option>
+                    <option value={0}>Extroverted</option>
                 </select>
                 
                 <button onClick={handleClick}>Continue</button>
@@ -229,8 +229,8 @@ const SignUpContainer = (props) => {
             <div className='signUp__question-div'>
                 <h2 className='signUp__question-header'>Are you into technology?</h2>
                 <select value={intoTech} onChange={intoTechChange}>
-                    <option value={true}>Yes</option>
-                    <option value={false}>No</option>
+                    <option value={1}>Yes</option>
+                    <option value={0}>No</option>
                 </select>
                 
                 <button onClick={handleClick}>Continue</button>
@@ -260,7 +260,7 @@ const SignUpContainer = (props) => {
 
         return(
             <div className='signUp__question-div'>
-                <h2 className='signUp__question-header'>Are you more extroverted, or introverted?</h2>
+                <h2 className='signUp__question-header'>Input your email and desired password</h2>
                 <label>Email: <input type='email' onChange={emailChange}></input></label>
                 <label>Password: <input type='password' onChange={passChange}></input></label>
                 <button onClick={handleClick}>Sign up!</button>

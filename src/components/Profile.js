@@ -15,9 +15,9 @@ const Profile = props => {
             <NavBar />
             <div className='profile__name-info'>
                 <h2 className='profile__name'>{props.session.firstName} {props.session.lastName}</h2>
-                <h3 className='profile__gender'>{props.session.gender}</h3>
+                <h3 className='profile__gender'>Gender: {props.session.gender}</h3>
                 <h3 className='profile__genderPref'>Looking for: {props.session.genderPref} partners</h3>
-                <h3 className='profile__spectrum'>{props.session.spectrum}</h3>
+                <h3 className='profile__spectrum'>Orientation: {props.session.spectrum}</h3>
             </div>
             {/* <MessagePage /> */}
         </main>

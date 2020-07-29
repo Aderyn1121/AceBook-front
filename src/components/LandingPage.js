@@ -51,7 +51,9 @@ const LandingPage = props => {
                     </div>
                 <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)} style={{ overlay: { backgroundImage: 'url(https://images.unsplash.com/photo-1579547621309-5e57ab324182?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80)', backgroundSize: '100%'}, content:{backgroundColor: '#5c2478', color: 'white', width: '25%', height: '50%', marginLeft: '30%'}}} >
                         <SignUpContainer />
-                        <button onClick={() => setModalIsOpen(false)}>Close</button>
+                        <div className='close__button'>
+                            <button onClick={() => setModalIsOpen(false)}>Close</button>
+                        </div>
                     </Modal>   
             </div>
         </main>

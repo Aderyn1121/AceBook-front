@@ -47,7 +47,6 @@ const Matches = props => {
         <main>
             <NavBar />
             <h1>Over 60% matches</h1>
-            <br />
             <div className='people__list-container'>
                 {matches.map((match, i) => {
                     if(match === undefined) return null;
